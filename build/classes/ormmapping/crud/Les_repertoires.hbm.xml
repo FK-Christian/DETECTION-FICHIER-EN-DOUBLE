@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Evaluation
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="crud.Les_repertoires" table="les_repertoires" lazy="false">
+		<id name="chemin_absolu" column="Chemin_absolu" type="string">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="date_Visite" column="Date_Visite" type="date" not-null="true" lazy="false"/>
+		<set name="ORM_Les_fichiers" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="les_repertoiresChemin_absolu" not-null="false"/>
+			<one-to-many class="crud.Les_fichiers"/>
+		</set>
+	</class>
+</hibernate-mapping>

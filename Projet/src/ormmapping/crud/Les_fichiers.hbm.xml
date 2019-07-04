@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Evaluation
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="crud.Les_fichiers" table="les_fichiers" lazy="false">
+		<id name="chemin_Absolu" column="Chemin_Absolu" type="string">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="date_visite" column="Date_visite" type="date" not-null="true" lazy="false"/>
+		<property name="hasche_du_fichier" column="hasche_du_fichier" type="string" length="1024" not-null="true" lazy="false"/>
+		<property name="etat_du_fichier" column="etat_du_fichier" type="string" length="100" not-null="true" lazy="false"/>
+		<many-to-one name="les_repertoiresChemin_absolu" cascade="lock" column="les_repertoiresChemin_absolu" class="crud.Les_repertoires" not-null="false" lazy="proxy" access="field">
+		</many-to-one>
+	</class>
+</hibernate-mapping>
